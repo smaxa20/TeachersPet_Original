@@ -165,10 +165,10 @@ var Pair9 = new BadPair(Daniel, Bao);
 var BadPairs = [Pair1, Pair2, Pair3, Pair4, Pair5, Pair6, Pair7, Pair8, Pair9];
 
 
-//gives a random number between 1 and 'quantity'
-function rand(quantity)
+//gives a random student from the array 'students'
+function rand(students)
 {
-    var x = Math.floor((Math.random() * quantity) + 1);
+    var x = Math.floor((Math.random() * students.length) + 1);
     var xName;
     for (var k = 0; k < students.length; k++)
     {
@@ -185,6 +185,8 @@ function rand(quantity)
 
 
 //gives pairs from the array 'students'
+//doesn't make a pair that is a documented bad pair
+//prints the extra student if there is an odd number of students
 function pair(students)
 {
     var student1 = 0;
@@ -248,6 +250,7 @@ function pair(students)
 
 
 //gives groups of size 'students_per_group' from the array 'students'
+//prints the extra students if the groups don't divide evenly
 //prints the number of bad pairs that are present
 function group(students_per_group, students)
 {
@@ -354,12 +357,14 @@ function group(students_per_group, students)
 }
 
 
-function check (list)
+//checks an array to see if there are any repeating values
+//returns true if there are no repeating values
+function check (array)
 {
     var foundRepeatingValue = false;
     var newList = [];
-    for(var i = 0; i < list.length; i++){
-        var thisValue = list[i];
+    for(var i = 0; i < array.length; i++){
+        var thisValue = array[i];
         if(i > 0)
         {
             if(newList.indexOf(thisValue) > -1)
@@ -374,11 +379,13 @@ function check (list)
 }
 
 
-function isUsed(baselist, usedlist)
+//checks to see if any item in the baseArray is in the usedArray
+//returns true if there is no instances of previously used items
+function isUsed(baseArray, usedArray)
 {
-    for (var i = 0; i < baselist.length; i++)
+    for (var i = 0; i < baseArray.length; i++)
     {
-        if (usedlist.includes(baselist[i]))
+        if (usedArray.includes(baseArray[i]))
         {
             return false;
         }
@@ -387,6 +394,9 @@ function isUsed(baselist, usedlist)
 }
 
 
+//checks to see if two students are a good pair
+//refers to the students by their ID numbers not their names
+//returns true if the two students are a good pair
 function GoodPair(student1, student2)
 {
     for (var i = 0; i < BadPairs.length; i++)
