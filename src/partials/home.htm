@@ -6,9 +6,10 @@
 <div>
     <p id="display2">x</p>
 </div>
-   
-<button type="button" class="newCustBtn" onclick="group(5, students)">Groups</button>
+
+<input type="number" min="2" id="students_per_group"/>
+<button type="button" class="newCustBtn" ng-click="ctrl.update()">Groups</button>
 <div>
-    <p id="display3">x</p>
+    <p id="display3">{{display3}}</p>
 </div>
 

@@ -32,6 +32,15 @@ app.config(function($routeProvider) {
     })
 });
 
+app.controller('main', function($scope, $http) {
+    var vm = this;
+    
+    vm.update = function() {
+        var students_per_group = document.getElementById("students_per_group").value;
+        vm.display3 = group(students_per_group, students);
+    };
+});
+
 app.controller('portfolio1', function($scope, $http) {
 	var vm = this,
 		img = ["default1.jpg", "default2.jpg", "default3.jpg", "default4.jpg", "default1.jpg", "default2.jpg", "default3.jpg", "default4.jpg", "default1.jpg", "default2.jpg", "default3.jpg", "default4.jpg"];
