@@ -131,6 +131,7 @@ var Jessica = new Student("Jessica", 7);
 var Megan = new Student("Megan", 8);
 var Parker = new Student("Parker", 9);
 var John = new Student("John", 10);
+
 var Cooper = new Student("Cooper", 11);
 var Gideon = new Student("Gideon", 12);
 var Andrew = new Student("Andrew", 13);
@@ -141,6 +142,7 @@ var Kristen = new Student("Kristen", 17);
 var Ji = new Student("Ji", 18);
 var Alex = new Student("Alex", 19);
 var Michael = new Student("Michael", 20);
+
 var Elisha = new Student("Elisha", 21);
 var Drew = new Student("Drew", 22);
 var Daniel = new Student("Daniel", 23);
@@ -151,9 +153,21 @@ var Hunter = new Student("Hunter", 27);
 var Theo = new Student("Theo", 28);
 var Stuart = new Student("Stuart", 29);
 var Teri = new Student("Teri", 30);
+
+var Becky = new Student("Becky", 31);
+var Brad = new Student("Brad", 32);
+var Karlie = new Student("Karlie", 33);
+var Haylie = new Student("Haylie", 34);
+var Paige = new Student("Paige", 35);
+var Kris = new Student("Kris", 36);
+var Baker = new Student("Baker", 37);
+var Scarlet = new Student("Scarlet", 38);
+var Penelope = new Student("Penelope", 39);
+var Taylor = new Student("Taylor", 40);
 var students = [Scott, Kathleen, Marissa, Bao, Luke, Cyrus, Jessica, Megan, Parker, John,
                 Cooper, Gideon, Andrew, Pete, Anne, Chad, Kristen, Ji, Alex, Michael,
-                Elisha, Drew, Daniel, James, Tanner, Thomas, Hunter, Theo, Stuart, Teri];
+                Elisha, Drew, Daniel, James, Tanner, Thomas, Hunter, Theo, Stuart, Teri,
+                Becky, Brad, Karlie, Haylie, Paige, Kris, Baker, Scarlet, Penelope, Taylor];
 
                 
 class BadPair {
@@ -171,7 +185,9 @@ var Pair6 = new BadPair(Kristen, Kathleen);
 var Pair7 = new BadPair(Cooper, Chad);
 var Pair8 = new BadPair(Jessica, Marissa);
 var Pair9 = new BadPair(Daniel, Bao);
-var BadPairs = [Pair1, Pair2, Pair3, Pair4, Pair5, Pair6, Pair7, Pair8, Pair9];
+var Pair10 = new BadPair(Becky, Paige);
+var Pair11 = new BadPair(Paige, Scarlet);
+var BadPairs = [Pair1, Pair2, Pair3, Pair4, Pair5, Pair6, Pair7, Pair8, Pair9, Pair10, Pair11];
 
 
 //gives a random student from the array 'students'
@@ -221,7 +237,6 @@ function pair(students)
 
         if(student1 != student2 && !used.includes(student1) && !used.includes(student2) && GoodPair(student1, student2))
         {
-            console.log("yes");
             var student1name, student2name;
             for (var k = 0; k < students.length; k++)
             {
@@ -238,7 +253,6 @@ function pair(students)
             used.push(student2);
 
             pairs.push(student1name + " and " + student2name);
-            console.log(pairs);
         }        
     }
     var x = "";
