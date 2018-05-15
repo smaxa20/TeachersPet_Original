@@ -3,21 +3,13 @@ var app = angular.module('webApp', ['ngRoute']);
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "partials/home.htm",
+        templateUrl : "partials/signIn.htm",
         controller : 'main as ctrl'
     })
-    .when("/portfolio", {
-        templateUrl : "partials/portfolio.htm",
-        controller : 'main as ctrl'
+    .when("/classes", {
+        templateUrl : "partials/classes.htm",
+        controller : 'classes as ctrl'
     })
-	.when("/portfolio1", {
-        templateUrl : "partials/portfolio1.htm",
-        controller : 'portfolio1 as ctrl'
-    })
-	.when("/portfolio2", {
-        templateUrl : "partials/portfolio2.htm",
-        controller : 'portfolio2 as ctrl'
-	})
 	.when("/team", {
         templateUrl : "partials/team.htm",
         controller : 'team as ctrl'
@@ -26,8 +18,44 @@ app.config(function($routeProvider) {
         templateUrl : "partials/contact.htm",
         controller : 'main as ctrl'
 	})
-	.when("/signIn", {
-        templateUrl : "partials/signIn.htm",
+	.when("/test", {
+        templateUrl : "partials/home.htm",
+        controller : 'main as ctrl'
+    })
+    .when("/newAccount", {
+        templateUrl : "partials/newAccount.htm",
+        controller : 'main as ctrl'
+    })
+    .when("/TnC", {
+        templateUrl : "partials/TnC.htm",
+        controller : 'main as ctrl'
+    })
+    .when("/forgotPass", {
+        templateUrl : "partials/forgotPass.htm",
+        controller : 'main as ctrl'
+    })
+    .when("/newClass", {
+        templateUrl : "partials/newClass.htm",
+        controller : 'main as ctrl'
+    })
+    .when("/actions", {
+        templateUrl : "partials/actions.htm",
+        controller : 'main as ctrl'
+    })
+    .when("/rand_student", {
+        templateUrl : "partials/rand_student.htm",
+        controller : 'main as ctrl'
+    })
+    .when("/rand_groups", {
+        templateUrl : "partials/rand_groups.htm",
+        controller : 'main as ctrl'
+    })
+    .when("/seating", {
+        templateUrl : "partials/seating.htm",
+        controller : 'main as ctrl'
+    })
+    .when("/profiles", {
+        templateUrl : "partials/profiles.htm",
         controller : 'main as ctrl'
     })
 });
@@ -41,46 +69,20 @@ app.controller('main', function($scope, $http) {
     };
 });
 
-app.controller('portfolio1', function($scope, $http) {
-	var vm = this,
-		img = ["default1.jpg", "default2.jpg", "default3.jpg", "default4.jpg", "default1.jpg", "default2.jpg", "default3.jpg", "default4.jpg", "default1.jpg", "default2.jpg", "default3.jpg", "default4.jpg"];
-
-	//finds images and gives a path based on page
-	vm.images = convertImagePath(img);
-	
-	vm.openModal = function(image) {
-		vm.title = image.name;
-		vm.modalImg = image.path;
-	};
-});
-
-app.controller('portfolio2', function($scope, $http) {
-	var vm = this,
-		img = ["default1.jpg", "default1.jpg", "default1.jpg", "default1.jpg"];
-
-	//finds images and gives a path based on page
-	vm.images = convertImagePath(img);
-});
-
 app.controller('team', function($scope, $http) {
-    var vm = this,
-        team = [
-            {
-                name: "Person A",
-                path: "img/default3.jpg",
-                desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            },
-            {
-                name: "Person B",
-                path: "img/default3.jpg",
-                desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            },
-            {
-                name: "Person C",
-                path: "img/default3.jpg",
-                desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-            }
-        ];
+    var vm = this;
+    var team = [
+        {
+            name: "Scott Maxa",
+            path: "img/ScottPic2.jpg",
+            desc: "Scott is a sophomore Computer Science and Mathematics major at Whitworth University. In his first year and a half of college he has become proficient in C++ and has dabbled in HTML, CSS and JavaScript. For this product he will do a lot of the coding. Scott is in charge of the main programming portions of the application and will do his best to help with the design elements."
+        },
+        {
+            name: "Jessica Berge",
+            path: "img/JessPic2.jpg",
+            desc: "Jessica is a senior studying Marketing and Graphic Design at Whitworth University. She has been in Spokane for the last twelve years. When she graduates she hopes to work in a graphic design firm. She is proffecient in Illustrator, InDesign, and DreamWeaver. She will design the user expereince, the branding, the logo, and create a marketing campaign to help advertise and further this web application."
+        },
+    ];
 
 	//finds images and gives a path based on page
     vm.team = team;
@@ -96,6 +98,38 @@ app.controller('team', function($scope, $http) {
         }
         
     };
+});
+
+app.controller('classes', function($scope, $http) {
+    var vm = this;
+    var classes = [
+        {
+            ID: "1",
+            name: "Algebra 1 - Section 1"
+        },
+        {
+            ID: "2",
+            name: "Geometry - Section 1"
+        },
+        {
+            ID: "3",
+            name: "Geometry - Section 2"
+        },
+        {
+            ID: "4",
+            name: "Algebra 2 - Section 1"
+        },
+        {
+            ID: "5",
+            name: "Algebra 1 - Section 2"
+        },
+        {
+            ID: "6",
+            name: "Algebra 1 - Section 3"
+        }
+    ];
+
+    vm.classes = classes;
 });
 
 //converts a ton of images to the correct path
