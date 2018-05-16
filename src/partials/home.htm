@@ -1,5 +1,5 @@
 <h6>Total Students: 40</h6>
-<h6>Total Bad Pairs: 11</h6>
+<h6>Total Bad Pairs: 5</h6>
 
 <button type="button" class="newCustBtn" onclick="rand(students)">Random</button>
 <div>
@@ -11,11 +11,14 @@
     <p id="display2">x</p>
 </div>
 
-<input type="number" min="2" max="7" value="3" id="students_per_group"/>
+<input type="number" min="3" max="7" value="3" id="students_per_group"/>
 <button type="button" class="newCustBtn" ng-click="ctrl.update()">Groups</button>
 <div>
     <p id="display3">{{display3}}</p>
 </div>
 
-
-
+<input type="number" min="3" max="7" value="3" id="students_per_row"/>
+<button type="button" class="newCustBtn" ng-click="ctrl.update1()">Seating Chart</button>
+<div>
+    <p id="display4">{{display4}}</p>
+</div>

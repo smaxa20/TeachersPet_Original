@@ -67,6 +67,10 @@ app.controller('main', function($scope, $http) {
         var students_per_group = document.getElementById("students_per_group").value;
         vm.display3 = group(students_per_group, students);
     };
+    vm.update1 = function() {
+        var students_per_group = document.getElementById("students_per_row").value;
+        vm.display4 = seating(students_per_group, students);
+    }
 });
 
 app.controller('team', function($scope, $http) {
@@ -212,16 +216,10 @@ class BadPair {
 }
 var Pair1 = new BadPair(Parker, John);
 var Pair2 = new BadPair(Scott, Alex);
-var Pair3 = new BadPair(Ji, Michael);
+var Pair3 = new BadPair(Scarlet, Penelope);
 var Pair4 = new BadPair(Thomas, Drew);
-var Pair5 = new BadPair(Elisha, Tanner);
-var Pair6 = new BadPair(Kristen, Kathleen);
-var Pair7 = new BadPair(Cooper, Chad);
-var Pair8 = new BadPair(Jessica, Marissa);
-var Pair9 = new BadPair(Daniel, Bao);
-var Pair10 = new BadPair(Becky, Paige);
-var Pair11 = new BadPair(Paige, Scarlet);
-var BadPairs = [Pair1, Pair2, Pair3, Pair4, Pair5, Pair6, Pair7, Pair8, Pair9, Pair10, Pair11];
+var Pair5 = new BadPair(Daniel, James);
+var BadPairs = [Pair1, Pair2, Pair3, Pair4, Pair5];
 
 
 //gives a random student from the array 'students'
@@ -458,10 +456,151 @@ function GoodPair(student1, student2)
 {
     for (var i = 0; i < BadPairs.length; i++)
     {
-        if (BadPairs[i].student1.ID == student1 && BadPairs[i].student2.ID == student2)
+        if ((BadPairs[i].student1.ID == student1 && BadPairs[i].student2.ID == student2) || (BadPairs[i].student1.ID == student2 && BadPairs[i].student2.ID == student1))
         {
             return false;
         }
     }
     return true;
+}
+
+
+function seating(students_per_group, students)
+{
+    var usedStudents = new Array();
+    var num_of_groups = students.length / students_per_group;
+    var groupsID = new Array();
+    var groups = new Array();
+    var groupsName = new Array();
+    var length = students.length;
+    var evenly_divided = true;
+    var extra = new Array();
+
+    while(students.length % students_per_group != 0)
+    {
+        evenly_divided = false;
+        var rand = Math.floor((Math.random() * students.length));
+        extra.push(students[rand]);
+        usedStudents.push(students[rand].ID);
+        students.splice(rand, 1);
+    }
+
+    while (usedStudents.length - extra.length != students.length)
+    {
+        var oneGroup = new Array();
+        for (var i = 0; i < students_per_group; i++)
+        {
+            oneGroup[i] = Math.floor((Math.random() * length) + 1);
+        }
+        if(!check(oneGroup) && isUsed(oneGroup, usedStudents))
+        {
+            for (var i = 0; i < students_per_group; i++)
+            {
+                usedStudents.push(oneGroup[i]);
+                groups.push(oneGroup[i]);
+            }
+            for (var k = 0; k < students.length; k++)
+            {
+                for (var j = 0; j < oneGroup.length; j++)
+                {
+                    if (students[k].ID == oneGroup[j])
+                    {
+                        groupsID.push(students[k].ID);
+                        groupsName.push(students[k].name);
+                    }    
+                }
+            }    
+        }
+    }
+
+
+    var count = 0;
+    for (var i = 0; i < groupsID.length; i++)
+    {
+        // row check
+        if (i+1 % students_per_group != 0 && i != 0 && !GoodPair(groupsID[i],groupsID[i+1]))
+        {
+            console.log("row",groupsID[i],groupsID[i+1]);
+            console.log(groupsID);
+            console.log(groupsName);
+            count++;
+        }
+
+        console.log(i,i+students_per_group);
+        // column check
+        if ((i + students_per_group) <= groupsID.length && !GoodPair(groupsID[i],groupsID[i+students_per_group]))
+        {
+            console.log("col",groupsID[i],groupsID[i+students_per_group]);
+            console.log(groupsID);
+            console.log(groupsName);
+            count++;
+        }
+    }
+
+
+
+    var x = "", it = 0, bad_pair_count = 0, tempGroup = new Array(), tempGroup2 = new Array();
+    for (var i = 1; i <= num_of_groups; i++)
+    {
+        for (var j = 1; j <= students_per_group; j++)
+        {
+            x += groupsName[it];
+            tempGroup.push(groups[it]);
+            if (j != students_per_group)
+            {
+                x += ",";
+            }
+            // if (j-1 != 0)
+            // {
+            //     if (!GoodPair(tempGroup[j-1],tempGroup[j-2]))
+            //     {
+            //         // console.log("row",tempGroup[j-1],tempGroup[j-2]);
+            //         // console.log("1",tempGroup);
+            //         bad_pair_count++;
+            //     }
+            // }
+            // if (!GoodPair(tempGroup[j-1],tempGroup2[j-1]))
+            // {
+            //     // console.log("col",tempGroup[j-1], tempGroup2[j-1]);
+            //     // console.log("1",tempGroup);
+            //     // console.log("2",tempGroup2);
+            //     bad_pair_count++;
+            // }
+            x += " ";
+            it++;
+            if (tempGroup.length == students_per_group)
+            {
+                tempGroup2 = tempGroup.slice();
+                tempGroup = [];
+            }
+        }
+        x += "<br>";
+    }
+
+
+
+
+
+    if (!evenly_divided)
+    {
+        x += "<br>";
+        x += "Extra Students: ";
+    }
+    while((!evenly_divided) && extra.length > 0)
+    {
+        students.push(extra[extra.length - 1]);
+        x += extra.pop().name;
+        if (extra.length != 0)
+        {
+            x += ", ";
+        }
+    }
+
+    x += "<br>";
+    x += "Bad Pairs: ";
+    x += count;
+    
+    var disp = document.getElementById('display4');
+    disp.innerHTML = x;
+
 }
