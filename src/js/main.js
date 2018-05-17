@@ -465,9 +465,8 @@ function GoodPair(student1, student2)
 }
 
 
-function seating(students_per_row, students)
+function seating(students_per_group, students)
 {
-    students_per_group = parseInt(students_per_row);
     var usedStudents = new Array();
     var num_of_groups = students.length / students_per_group;
     var groupsID = new Array();
@@ -521,12 +520,19 @@ function seating(students_per_row, students)
         // row check
         if (i+1 % students_per_group != 0 && i != 0 && !GoodPair(groupsID[i],groupsID[i+1]))
         {
+            console.log("row",groupsID[i],groupsID[i+1]);
+            console.log(groupsID);
+            console.log(groupsName);
             count++;
         }
 
+        console.log(i,i+students_per_group);
         // column check
         if ((i + students_per_group) <= groupsID.length && !GoodPair(groupsID[i],groupsID[i+students_per_group]))
         {
+            console.log("col",groupsID[i],groupsID[i+students_per_group]);
+            console.log(groupsID);
+            console.log(groupsName);
             count++;
         }
     }

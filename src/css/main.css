@@ -24,6 +24,9 @@ body{
 /*
 • HEADER
 */
+.menu {
+	background-color: rgb(130,165,134);
+}
 .menuList{
     list-style-type: none;
     margin: 0;
@@ -265,7 +268,15 @@ input[type=password]:focus {
 	 background-color: rgb(130,165,134);
 	 color: white;
 }
-
+.RandStudent{
+	background-color: rgb(130,165,134);
+	color: white;
+	padding: 30px 70px;
+	margin-top: 10px;	
+}
+#display1{
+	font-size: 40pt;
+}
 /*
 • CLASSES
 */
@@ -311,8 +322,8 @@ a.choice:hover {
 • FOOTER
 */
 footer {
-	background-color: black;
-	color: white;
+	background-color: rgb(130,165,134);
+	color:white;
 	position: absolute;
     left: 0;
     bottom: 0;
@@ -327,4 +338,10 @@ footer table {
 
 footer td {
 	width: 30%;
+}
+footer td a {
+	color: white;
+}
+footer td a:hover {
+	color: rgb(67,98,82);
 }
