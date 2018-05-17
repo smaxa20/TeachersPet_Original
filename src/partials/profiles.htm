@@ -1,0 +1,10 @@
+<div class="text-center">
+    <div ng-repeat="x in ctrl.students" ng-click="ctrl.openModal(x)"class="profiles">{{x.name}}</div>
+    <a class="profiles" href="#!newStudent">Add Student</a>
+    <div class="teamInfo" id="info">
+        <div class="teamName" data-dismiss="teamInfo">{{ctrl.studentName}}</div>
+        <div>{{ctrl.BP1}}</div>
+        <div>{{ctrl.BP2}}</div>
+        <div class="teamDesc">Special Needs? {{ctrl.studentSpecial}}</div>
+    </div>
+</div>
