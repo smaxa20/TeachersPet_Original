@@ -72,48 +72,6 @@ body{
     display: block;
 }
 
-/* 
-• PORTFOLIO
-*/
-.gallery {
-	-webkit-column-count: 4; /* Chrome, Safari, Opera */
-    -moz-column-count: 4; /* Firefox */
-	column-count: 4;
-	margin: 15px;
-}
-.galleryImg {
-	width: 100%;
-	margin: 5px;
-	cursor: pointer;
-}
-.modal {
-	position: absolute;
-	width: 100%;
-}
-.modal-title {
-	font-size: 40px;
-}
-.modal-dialog{
-	width: 200%;	
-}
-.modal-content {
-	width:150%;
-	text-align: center;	
-	left: 50%;
-	transform: translateX(-50%);
-}
-.modalImg {
-	width: 60%;
-	margin: 40px 0px 40px 150px;
-	border: solid black 4px;			
-}
-.close {
-	position: absolute;
-	top: 30px;
-	right: 40px;
-	font-size: 40px;
-}
-
 /*
 • Button Cards
 */
@@ -273,6 +231,8 @@ input[type=password]:focus {
 	color: white;
 	padding: 30px 70px;
 	margin-top: 10px;	
+	display: block;
+	margin-bottom: 10px;
 }
 #display1{
 	font-size: 40pt;
@@ -297,7 +257,14 @@ a.choice:hover {
 	color: rgb(67,98,82) !important;
 	text-decoration: none;
 }
-
+.container {
+	width: 100%;
+}
+.col1, .col2 {
+	display: inline-block;
+	vertical-align: top;
+	width: 30%;
+}
 /*
 • Actions
 */
