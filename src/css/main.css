@@ -233,6 +233,7 @@ input[type=password]:focus {
 	margin-top: 10px;	
 	display: block;
 	margin-bottom: 10px;
+	font-size: 20pt
 }
 #display1{
 	font-size: 40pt;
@@ -257,14 +258,17 @@ a.choice:hover {
 	color: rgb(67,98,82) !important;
 	text-decoration: none;
 }
+
 .container {
 	width: 100%;
 }
+
 .col1, .col2 {
 	display: inline-block;
 	vertical-align: top;
-	width: 30%;
+	width: 48%;
 }
+
 /*
 • Actions
 */
@@ -297,6 +301,11 @@ a.choice:hover {
 	border-radius: 5px;
 	background-color: rgb(67,98,82);
 	color: white !important;
+	cursor: pointer;
+}
+
+.profiles:hover {
+	text-decoration: underline;
 }
 
 /*

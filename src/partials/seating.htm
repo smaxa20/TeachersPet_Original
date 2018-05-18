@@ -1,5 +1,25 @@
-<input type="number" min="3" max="7" value="3" id="students_per_row"/>
-<button type="button" class="newCustBtn" ng-click="ctrl.update1()">Seating Chart</button>
-<div>
-    <p id="display4">{{display4}}</p>
+<div class="container" align="center">
+    <h1>Seating Chart</h1>
+    <div class="col1">
+        <button type="button" class="RandStudent" ng-click="ctrl.update1()">Rows</button>
+        <div>
+            <h5 style="display: inline-block">Students per group: </h5>    
+            <input style="display: inline-block" type="number" min="2" max="7" value="2" id="students_per_row"/>
+        </div>
+        <div>
+            <p id="display4">{{display4}}</p>
+        </div>        
+    </div>
+
+    <div class="col2">
+        <button type="button" class="RandStudent" ng-click="ctrl.update()">Groups</button>
+        <div>
+            <h5 style="display: inline-block">Students per group: </h5>
+            <input  style="display: inline-block" type="number" min="2" max="7" value="2" id="students_per_group"/>
+        </div>
+        <div>
+            <p id="display3">{{display3}}</p>
+        </div>
+    </div>
 </div>
+    

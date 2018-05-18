@@ -1,4 +1,5 @@
 <div class="container" align="center">
+    <h1>Random Student</h1>
     <div class="col1">
         <button type="button" class="RandStudent" onclick="pair(students)">Pairs</button>
         <div>
@@ -8,7 +9,10 @@
 
     <div class="col2">
         <button type="button" class="RandStudent" ng-click="ctrl.update()">Groups</button>
-        <input type="number" min="3" max="7" value="3" id="students_per_group"/>
+        <div>
+            <h5 style="display: inline-block">Students per group: </h5>
+            <input  style="display: inline-block" type="number" min="3" max="7" value="3" id="students_per_group"/>
+        </div>
         <div>
             <p id="display3">{{display3}}</p>
         </div>

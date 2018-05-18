@@ -446,6 +446,7 @@ function group(students_per_group, students)
 //does not take into account special needs students
 function seating(students_per_row, students)
 {
+    students_per_group = parseInt(students_per_row);
     var usedStudents = new Array();
     var num_of_groups = students.length / students_per_group;
     var groupsID = new Array();
@@ -454,16 +455,6 @@ function seating(students_per_row, students)
     var length = students.length;
     var evenly_divided = true;
     var extra = new Array();
-    // var special_list = new Array();
-
-    // for (var i = 0; i < students.length; i++)
-    // {
-    //     if (students[i].special == true)
-    //     {
-    //         special_list.push(students[i].name);
-    //         usedStudents.push(students[i].ID);
-    //     }
-    // }
 
     while(students.length % students_per_group != 0)
     {
@@ -501,14 +492,6 @@ function seating(students_per_row, students)
             }    
         }
     }
-
-    // for (var i = 0; i < special_list.length; i++)
-    // {
-    //     var special_spot = Math.floor((Math.random() * students_per_group));
-    //     var temp = groupsID[special_spot];
-    //     groupsID[special_spot] = special_list[i];
-    //     groupsID[groupsID.length-1] = temp;
-    // }
 
     var count = 0;
     for (var i = 0; i < groupsID.length; i++)
